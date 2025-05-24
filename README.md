@@ -1,3 +1,3 @@
 # Cooperativa el Manguito
 
-## UI solamente, depsliegue lo hara otro equipo segun entendimos
+## UI/UX solamente, depsliegue lo hara otro equipo segun entendimos
