@@ -67,7 +67,7 @@ class Home extends StatelessWidget {
           child: Text(
             "Menu",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
+              color: Color.fromARGB(100, 2, 46, 255),
             ),
           ),
         ),
@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
           child: Text(
             "Platillos",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
+              color: Color.fromARGB(100, 2, 46, 255),
             ),
           ),
         ),

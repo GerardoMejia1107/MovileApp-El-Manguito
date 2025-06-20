@@ -10,6 +10,8 @@ class Trending extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         title: Text("Trending Restaurants"),
+        titleTextStyle: TextStyle(color: Colors.white,
+        fontSize: 18),
         centerTitle: true,
       ),
       body: Padding(

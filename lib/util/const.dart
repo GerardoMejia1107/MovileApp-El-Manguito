@@ -4,13 +4,13 @@ class Constants {
   static const String appName = "Foody Bite";
 
   // Colors for theme
-  static const Color lightPrimary = Color(0xfffcfcff);
-  static const Color darkPrimary = Colors.black;
-  static const Color lightAccent = Color(0xff5563ff);
-  static const Color darkAccent = Color(0xff5563ff);
-  static const Color lightBG = Color(0xfffcfcff);
-  static const Color darkBG = Colors.black;
-  static final Color ratingBG = Colors.yellow.shade600;
+  static const Color lightPrimary = Color(0xff099e37);
+  static const Color darkPrimary = Color(0xffffffff);
+  static const Color lightAccent = Color(0xffffffff);
+  static const Color darkAccent = Color(0xff4385b6);
+  static const Color lightBG = Color(0xffffffff);
+  static const Color darkBG = Color(0xff060604);
+  static final Color ratingBG = Color(0xffefcb69);
 
   static final ThemeData lightTheme = ThemeData(
     primaryColor: lightPrimary,
