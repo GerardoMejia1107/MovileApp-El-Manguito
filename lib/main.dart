@@ -1,3 +1,4 @@
+import 'package:el_mango/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/main_screen.dart';
 import 'util/const.dart';
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       title: Constants.appName,
       theme: Constants.lightTheme,
       darkTheme: Constants.darkTheme,
-      home: MainScreen(),
+      home: SafeArea(child: SplashScreen()),
     );
   }
 }
