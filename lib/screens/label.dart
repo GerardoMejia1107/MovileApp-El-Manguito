@@ -12,29 +12,52 @@ class Label extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        title: Text(
-          "Etiquetas",
+        title: const Text(
+          "A la carta",
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(10),
-        children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              primary: false,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: foods == null ? 0 : foods.length,
-              itemBuilder: (BuildContext context, int index) {
-                Map food = foods[index];
-
-                return FoodItem(img: food["img"], flags: food["flags"], title: food["title"]);
-              },
+      body: ListView.builder(
+        padding: const EdgeInsets.all(10),
+        itemCount: foods.length,
+        itemBuilder: (BuildContext context, int index) {
+          final food = foods[index];
+          return GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return AlertDialog(
+                    title: Text(
+                      (food["title"]?.trim().isNotEmpty ?? false)
+                          ? food["title"].toUpperCase()
+                          : "Producto",
+                    ),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(food["img"], fit: BoxFit.cover),
+                        const SizedBox(height: 10),
+                        Text("Etiquetas: ${food["flags"]}"),
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text("Cerrar"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: FoodItem(
+              img: food["img"],
+              flags: food["flags"],
+              title: food["title"],
             ),
-          ),
-          SizedBox(height: 10.0),
-        ],
+          );
+        },
       ),
     );
   }

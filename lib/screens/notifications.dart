@@ -12,7 +12,7 @@ class Notifications extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: const Text(
-          "Etiquetas",
+          "Notificaciones",
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
