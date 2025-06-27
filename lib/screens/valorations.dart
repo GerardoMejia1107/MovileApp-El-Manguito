@@ -1,3 +1,5 @@
+import 'package:el_mango/util/food_valoration.dart';
+import 'package:el_mango/widgets/food_valoration_item.dart';
 import 'package:flutter/material.dart';
 
 class Valorations extends StatefulWidget {
@@ -21,7 +23,25 @@ class _ValorationsState extends State<Valorations> {
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
-        child: Text("Aquí irán las valoraciones"),
+        child: ListView(
+          children: <Widget>[
+            SizedBox(height: 10),
+            ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount:
+                  foods_valorations == null ? 0 : foods_valorations.length,
+              itemBuilder: (BuildContext context, int index) {
+                Map food_valoration = foods_valorations[index];
+                return FoodValorationItem(
+                  title: food_valoration["title"],
+                  valorations: food_valoration["valorations"],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
