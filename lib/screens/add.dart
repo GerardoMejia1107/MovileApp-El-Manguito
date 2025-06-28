@@ -1,6 +1,14 @@
 import 'dart:io';
+import 'package:el_mango/screens/edit_food.dart';
+import 'package:el_mango/screens/edit_product.dart';
+import 'package:el_mango/screens/food_list.dart';
+import 'package:el_mango/screens/products_list.dart';
+import 'package:el_mango/widgets/food_delete_item.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+
+import '../util/foods.dart';
+import 'sales.dart';
 
 class Add extends StatefulWidget {
   const Add({super.key});
@@ -105,7 +113,7 @@ class _AddState extends State<Add> {
                                                 )
                                                 : Icon(
                                                   Icons.photo,
-                                                  size: 90,
+                                                  size: 125,
                                                   color: Color.fromARGB(
                                                     100,
                                                     96,
@@ -220,23 +228,23 @@ class _AddState extends State<Add> {
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child:
-                                        _imageFile != null
-                                            ? Image.file(
-                                          _imageFile!,
-                                          width: 90,
-                                          height: 90,
-                                          fit: BoxFit.cover,
-                                        )
-                                            : Icon(
-                                          Icons.photo,
-                                          size: 90,
-                                          color: Color.fromARGB(
-                                            100,
-                                            96,
-                                            96,
-                                            96,
-                                          ),
-                                        ),
+                                            _imageFile != null
+                                                ? Image.file(
+                                                  _imageFile!,
+                                                  width: 90,
+                                                  height: 90,
+                                                  fit: BoxFit.cover,
+                                                )
+                                                : Icon(
+                                                  Icons.photo,
+                                                  size: 125,
+                                                  color: Color.fromARGB(
+                                                    100,
+                                                    96,
+                                                    96,
+                                                    96,
+                                                  ),
+                                                ),
                                       ),
                                       Positioned(
                                         bottom: 0,
@@ -324,117 +332,78 @@ class _AddState extends State<Add> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                GestureDetector(
-                  onTap:
-                      () => showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            title: Text("Quitar producto"),
-                            content: Padding(
-                              padding: EdgeInsets.only(
-                                left: 0.0,
-                                right: 0.0,
-                                bottom: 10,
-                                top: 10,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[Text("Seleccione un producto para eliminar"),
-                                ],
-                              ),
+                SizedBox(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProductsList()),
+                      );
+                    },
+                    child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Card(
+                          elevation: 2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 5,
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text("Cerrar"),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                  child: SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Card(
-                        elevation: 2,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 5,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(
-                                Icons.style_outlined,
-                                color: Color.fromARGB(100, 66, 66, 66),
-                                size: 90,
-                              ),
-                              SizedBox(height: 5),
-                              Text("Producto"),
-                            ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.style_outlined,
+                                  color: Color.fromARGB(100, 66, 66, 66),
+                                  size: 90,
+                                ),
+                                SizedBox(height: 5),
+                                Text("Producto"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap:
-                      () => showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            title: Text("Quitar platillo"),
-                            content: Padding(
-                              padding: EdgeInsets.only(
-                                left: 0.0,
-                                right: 0.0,
-                                bottom: 10,
-                                top: 10,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[Text("Añadiendo...")],
-                              ),
+                SizedBox(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FoodList()),
+                      );
+                    },
+                    child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Card(
+                          elevation: 2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 5,
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text("Cerrar"),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                  child: SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Card(
-                        elevation: 2,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 5,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(
-                                Icons.fastfood_rounded,
-                                color: Color.fromARGB(255, 253, 236, 93),
-                                size: 90,
-                              ),
-                              SizedBox(height: 5),
-                              Text("Platillo"),
-                            ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.fastfood_rounded,
+                                  color: Color.fromARGB(255, 253, 236, 93),
+                                  size: 90,
+                                ),
+                                SizedBox(height: 5),
+                                Text("Platillo"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -458,116 +427,78 @@ class _AddState extends State<Add> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                GestureDetector(
-                  onTap:
-                      () => showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            title: Text("Editar producto"),
-                            content: Padding(
-                              padding: EdgeInsets.only(
-                                left: 0.0,
-                                right: 0.0,
-                                bottom: 10,
-                                top: 10,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[Text("Añadiendo...")],
-                              ),
+                SizedBox(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditProduct()),
+                      );
+                    },
+                    child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Card(
+                          elevation: 2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 5,
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text("Cerrar"),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                  child: SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Card(
-                        elevation: 2,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 5,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(
-                                Icons.style_outlined,
-                                color: Color.fromARGB(100, 66, 66, 66),
-                                size: 90,
-                              ),
-                              SizedBox(height: 5),
-                              Text("Producto"),
-                            ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.style_outlined,
+                                  color: Color.fromARGB(100, 66, 66, 66),
+                                  size: 90,
+                                ),
+                                SizedBox(height: 5),
+                                Text("Producto"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap:
-                      () => showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            title: Text("Editar platillo"),
-                            content: Padding(
-                              padding: EdgeInsets.only(
-                                left: 0.0,
-                                right: 0.0,
-                                bottom: 10,
-                                top: 10,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[Text("Añadiendo...")],
-                              ),
+                SizedBox(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditFood()),
+                      );
+                    },
+                    child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Card(
+                          elevation: 2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 5,
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text("Cerrar"),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                  child: SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Card(
-                        elevation: 2,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 5,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(
-                                Icons.fastfood_rounded,
-                                color: Color.fromARGB(255, 253, 236, 93),
-                                size: 90,
-                              ),
-                              SizedBox(height: 5),
-                              Text("Platillo"),
-                            ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.fastfood_rounded,
+                                  color: Color.fromARGB(255, 253, 236, 93),
+                                  size: 90,
+                                ),
+                                SizedBox(height: 5),
+                                Text("Platillo"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
