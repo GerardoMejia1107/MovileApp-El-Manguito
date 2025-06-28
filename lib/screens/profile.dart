@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:el_mango/screens/notifications.dart';
 import 'package:el_mango/screens/relations.dart';
 import 'package:el_mango/screens/sales.dart';
 import 'package:el_mango/screens/valorations.dart';
