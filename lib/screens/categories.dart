@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../util/categories.dart';
+import '../util/productsInfo.dart';
 import '../widgets/category_item.dart';
 
 class Categories extends StatefulWidget {
@@ -22,9 +22,9 @@ class _CategoriesState extends State<Categories> {
         child: GridView.count(
           crossAxisCount: 2,
           children: List.generate(
-            categories.length,
+            productsInfo.length,
                 (index) {
-              var cat = categories[index];
+              var cat = productsInfo[index];
 
               return GestureDetector(
                 onTap: () {

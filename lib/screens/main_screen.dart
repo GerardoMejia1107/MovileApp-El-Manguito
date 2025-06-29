@@ -3,14 +3,13 @@ import 'package:el_mango/widgets/radial_transition_overlay.dart';
 import 'package:flutter/material.dart';
 import '../screens/add.dart';
 import '../screens/home.dart';
-import '../screens/label.dart';
 import '../screens/profile.dart';
-import '../screens/notifications.dart';
+import 'productsScreens/product_list.dart';
+import 'platesScreens/platesList.dart';
 
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
-
 }
 
 final List<GlobalKey> iconKeys = List.generate(5, (_) => GlobalKey());
@@ -24,17 +23,17 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<IconData> icons = [
     Icons.home,
-    Icons.label,
+    Icons.restaurant_menu,
     Icons.add,
-    Icons.notifications,
+    Icons.local_grocery_store,
     Icons.person,
   ];
 
   final List<Widget> pages = [
     Home(),
-    Label(),
+    PlatesList(),
     Add(),
-    Notifications(),
+    ProductList(),
     Profile(),
   ];
 
@@ -59,6 +58,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: [
           AnimatedOpacity(
@@ -137,7 +137,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
 
   Widget buildTabIcon(int index) {
     final bool isActive = _page == index;

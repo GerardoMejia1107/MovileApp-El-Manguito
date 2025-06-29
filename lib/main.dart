@@ -2,9 +2,18 @@ import 'package:el_mango/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/main_screen.dart';
 import 'util/const.dart';
+import 'package:flutter/services.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Forzar orientación vertical
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(const MyApp());
 }
 
