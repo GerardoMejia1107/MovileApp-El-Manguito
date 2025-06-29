@@ -1,6 +1,5 @@
-import 'package:el_mango/widgets/food_delete_item.dart';
 import 'package:flutter/material.dart';
-
+import '../widgets/food_delete_item.dart';
 import '../util/foods.dart';
 
 class FoodList extends StatefulWidget {
@@ -13,14 +12,16 @@ class FoodList extends StatefulWidget {
 class _FoodListState extends State<FoodList> {
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    // Aplanar la lista de platos desde todas las categorías
+    final List<Map<String, dynamic>> allFoods = categorizedFoods
+        .expand((category) => (category["plates"] as List).cast<Map<String, dynamic>>())
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Lista de platillos",
           style: TextStyle(
             color: Colors.white,
@@ -30,12 +31,15 @@ class _FoodListState extends State<FoodList> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: ListView.builder(
-          itemCount: foods.length,
+          itemCount: allFoods.length,
           itemBuilder: (BuildContext context, int index) {
-            Map food = foods[index];
-            return FoodDeleteItem(img: food["img"], name: food["title"]);
+            final food = allFoods[index];
+            return FoodDeleteItem(
+              img: food["img"],
+              name: food["title"],
+            );
           },
         ),
       ),

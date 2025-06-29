@@ -15,9 +15,38 @@ class Constants {
   static final Color ratingBG = secondary;
 
   // =======================
+// ✏️ Estilos de texto
+// =======================
+  static const TextTheme lightTextTheme = TextTheme(
+    titleLarge: TextStyle( // Para títulos como "Bienvenido"
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+    bodyMedium: TextStyle( // Para subtítulos o descripción
+      fontSize: 16,
+      color: Colors.black87,
+    ),
+  );
+
+  static const TextTheme darkTextTheme = TextTheme(
+    titleLarge: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 16,
+      color: Colors.white70,
+    ),
+  );
+
+
+  // =======================
   // 🔆 Tema Claro
   // =======================
   static final ThemeData lightTheme = ThemeData(
+    textTheme: lightTextTheme,
     brightness: Brightness.light,
     primaryColor: primary,
     scaffoldBackgroundColor: lightBG,
@@ -52,6 +81,7 @@ class Constants {
   // 🌙 Tema Oscuro
   // =======================
   static final ThemeData darkTheme = ThemeData(
+    textTheme: darkTextTheme,
     brightness: Brightness.dark,
     primaryColor: third,
     scaffoldBackgroundColor: darkBG,
@@ -81,4 +111,8 @@ class Constants {
       cursorColor: third,
     ), bottomAppBarTheme: BottomAppBarTheme(color: Color(0xFF1E1E1E)),
   );
+
+
 }
+
+

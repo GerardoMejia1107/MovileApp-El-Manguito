@@ -1,4 +1,4 @@
-import 'package:el_mango/util/categories.dart';
+import 'package:el_mango/util/productsInfo.dart';
 import 'package:el_mango/widgets/product_edit_item.dart';
 import 'package:flutter/material.dart';
 
@@ -31,9 +31,9 @@ class _EditProductState extends State<EditProduct> {
       body: Padding(
         padding: EdgeInsets.all(10),
         child: ListView.builder(
-          itemCount: categories.length,
+          itemCount: productsInfo.length,
           itemBuilder: (BuildContext context, int index) {
-            Map category = categories[index];
+            Map category = productsInfo[index];
             return ProductEditItem(img: category["img"], name: category["name"]);
           },
         ),
