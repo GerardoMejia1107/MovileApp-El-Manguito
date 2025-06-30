@@ -10,8 +10,8 @@ const List<Map<String, dynamic>> productsInfo = [
     "usage": "Sopas, frita, puré, snacks.",
     "location": "Zona oriental de El Salvador",
     "treeImages": [
-      "assets/yuca_arbol1.png",
-      "assets/yuca_arbol2.png"
+      "assets/yuca_arbol1.jpg",
+      "assets/yuca_arbol2.jpg"
     ]
   },
   {
@@ -23,7 +23,7 @@ const List<Map<String, dynamic>> productsInfo = [
     "usage": "Jugo, dulce, aguardiente, panela.",
     "location": "Sonsonate y Ahuachapán",
     "treeImages": [
-      "assets/cana_arbol1.png"
+      "assets/cana_arbol1.jpeg"
     ]
   },
   {
@@ -35,8 +35,8 @@ const List<Map<String, dynamic>> productsInfo = [
     "usage": "Jugos, aderezos, medicina natural.",
     "location": "La Libertad",
     "treeImages": [
-      "assets/limon_arbol1.png",
-      "assets/limon_arbol2.png"
+      "assets/limon_arbol1.jpg",
+      "assets/limon_arbol2.jpg"
     ]
   },
   {
@@ -48,7 +48,7 @@ const List<Map<String, dynamic>> productsInfo = [
     "usage": "Jugos, postres, mermeladas.",
     "location": "San Miguel y San Vicente",
     "treeImages": [
-      "assets/naranja_arbol1.png"
+      "assets/naranja_arbol1.jpg"
     ]
   },
   {
@@ -60,8 +60,8 @@ const List<Map<String, dynamic>> productsInfo = [
     "usage": "Chocolate, bebida tradicional, cosmética.",
     "location": "Cuscatlán",
     "treeImages": [
-      "assets/cacao_arbol1.png",
-      "assets/cacao_arbol2.png"
+      "assets/cacao_arbol1.jpg",
+      "assets/cacao_arbol2.jpg"
     ]
   },
   {

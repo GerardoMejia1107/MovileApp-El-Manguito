@@ -51,17 +51,21 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
-        child: Text(
-          "LOGO",
-          style: TextStyle(
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
-            color: isDark
-                ? Theme.of(context).colorScheme.secondary
-                : Theme.of(context).colorScheme.primary,
+        child: ClipOval(
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              color: Color(0xFFA3D49B), // marco blanco
+              shape: BoxShape.circle,
+            ),
+            child: Image.asset(
+              'assets/icon/icon_logo.png',
+              fit: BoxFit.cover,
+            ),
           ),
         ),
+
       ),
     );
   }

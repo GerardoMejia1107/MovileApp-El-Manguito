@@ -1,8 +1,7 @@
 import 'dart:io';
 
+import 'package:el_mango/screens/main_screen.dart';
 import 'package:flutter/material.dart';
-import '../screens/categories.dart';
-import '../screens/trending.dart';
 import '../util/productsInfo.dart';
 import '../util/friends.dart';
 import '../widgets/category_item.dart';
@@ -14,6 +13,9 @@ import '../screens/productsScreens/product_detail.dart';
 
 
 class Home extends StatelessWidget {
+  final Function(int) onNavigateToPage;
+  const Home({required this.onNavigateToPage, Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,10 +40,10 @@ class Home extends StatelessWidget {
               buildCategoryRow('Nuestros productos', context),
               SizedBox(height: 10.0),
               buildProductIconsList(context),
-              SizedBox(height: 20.0),
-              buildCategoryRow('Compartelo con tus amigos', context),
-              SizedBox(height: 10.0),
-              buildFriendsList(),
+              //SizedBox(height: 20.0),
+              //buildFriendsRow('Compartelo con tus amigos', context),
+              //SizedBox(height: 10.0),
+              //buildFriendsList(),
               SizedBox(height: 50.0),
             ],
           ),
@@ -75,7 +77,7 @@ class Home extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Bienvenido a El Mango',
+                  'Bienvenido a El Manguito',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -117,10 +119,7 @@ class Home extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Trending()),
-                );
+                onNavigateToPage(1); // Por ejemplo, ir a ProductList (índice 3)
               },
               child: Text(
                 "Ver menu",
@@ -186,7 +185,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  //CTA de productos destacadosy compartelo con tus amigos
+  //CTA de productos destacados
   Widget buildCategoryRow(String category, BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -207,10 +206,7 @@ class Home extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Categories()),
-                );
+                onNavigateToPage(3); // Por ejemplo, ir a ProductList (índice 3)
               },
               child: Text(
                 "Ver más",
@@ -279,6 +275,31 @@ class Home extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  //CTA de ompartelo con tus amigos
+  Widget buildFriendsRow(String category, BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Flexible(
+              flex: 2,
+              child: Text(
+                category,
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w800,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

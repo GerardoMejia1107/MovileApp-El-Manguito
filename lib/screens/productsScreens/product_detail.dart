@@ -150,16 +150,37 @@ class _ProductDetailState extends State<ProductDetail> {
                         separatorBuilder: (_, __) =>
                         const SizedBox(width: 10),
                         itemBuilder: (context, index) {
-                          return ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.asset(
-                              treeImages[index],
-                              width: 120,
-                              height: 120,
-                              fit: BoxFit.cover,
+                          final imagePath = treeImages[index];
+                          return GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                barrierColor: Colors.black.withOpacity(0.8), // <-- Fondo oscuro
+                                builder: (_) => Dialog(
+                                  backgroundColor: Colors.transparent,
+                                  insetPadding: const EdgeInsets.all(10),
+                                  child: InteractiveViewer(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.asset(imagePath, fit: BoxFit.contain),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                imagePath,
+                                width: 120,
+                                height: 120,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           );
                         },
+
                       ),
                     ),
                   ],

@@ -3,11 +3,15 @@ import 'package:el_mango/widgets/radial_transition_overlay.dart';
 import 'package:flutter/material.dart';
 import '../screens/add.dart';
 import '../screens/home.dart';
-import '../screens/profile.dart';
+import '../screens/profileScreens/profile.dart';
 import 'productsScreens/product_list.dart';
 import 'platesScreens/platesList.dart';
 
 class MainScreen extends StatefulWidget {
+  final int initialPage;
+
+  const MainScreen({this.initialPage = 0, super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -20,6 +24,13 @@ class _MainScreenState extends State<MainScreen> {
   Widget? _localRadialEntry;
   double _contentOpacity = 1.0;
 
+  void goToPage(int pageIndex) {
+    _pageController.animateToPage(
+      pageIndex,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   final List<IconData> icons = [
     Icons.home,
@@ -29,18 +40,13 @@ class _MainScreenState extends State<MainScreen> {
     Icons.person,
   ];
 
-  final List<Widget> pages = [
-    Home(),
-    PlatesList(),
-    Add(),
-    ProductList(),
-    Profile(),
-  ];
+
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _page = widget.initialPage;
+    _pageController = PageController(initialPage: _page);
   }
 
   @override
@@ -57,6 +63,15 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final List<Widget> pages = [
+      Home(onNavigateToPage: (int index) => goToPage(index)),
+      PlatesList(),
+      Add(),
+      ProductList(),
+      Profile(),
+    ];
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Stack(
@@ -185,4 +200,5 @@ class _MainScreenState extends State<MainScreen> {
       );
     });
   }
+
 }
