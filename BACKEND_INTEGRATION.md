@@ -311,7 +311,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const pool = require('../config/database');
 
-const JWT_SECRET = 'tu_secreto_super_seguro'; // En producción, usa variable de entorno
+// ⚠️ IMPORTANTE: NUNCA hardcodees el secreto en producción
+// Usa variables de entorno: process.env.JWT_SECRET
+const JWT_SECRET = process.env.JWT_SECRET || 'solo_para_desarrollo_local';
 
 // POST /api/auth/register - Registrar usuario
 router.post('/register', async (req, res) => {

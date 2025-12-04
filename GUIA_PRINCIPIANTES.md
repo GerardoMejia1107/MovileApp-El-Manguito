@@ -1,4 +1,4 @@
-# Guía Rápida: Tu Primera Vez con Flutter
+# Guía Completa para Principiantes: Tu Primera Vez con Flutter
 
 ## 👋 ¡Bienvenido a Flutter!
 
